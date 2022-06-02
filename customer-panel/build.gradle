@@ -14,4 +14,5 @@ publishing {
 dependencies {
     implementation project(':map')
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'javax.validation:validation-api:2.0.1.Final'
 }
