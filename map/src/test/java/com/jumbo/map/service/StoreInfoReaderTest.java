@@ -47,7 +47,7 @@ class StoreInfoReaderTest {
     @Test
     @SneakyThrows
     void testReadMethod_When_fileIsPresentAndStreetFieldIsNotPresent() {
-        StoreListDto list = reader.readFromResource("classpath:/mapinfo/Onefieldmissingstores.json");
+        StoreListDto list = reader.readFromResource("classpath:/mapinfo/streetfieldmissingstores.json");
 
         assertFalse(list.getStores().isEmpty());
         assertEquals(1, list.getStores().size());
