@@ -1,0 +1,4 @@
+rootProject.name = 'Jumbo'
+include 'customer-panel'
+include 'map'
+
