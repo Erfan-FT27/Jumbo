@@ -35,6 +35,8 @@ subprojects {
         //DB
         implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 
+        //Web requirements like Jackson
+        implementation 'org.springframework.boot:spring-boot-starter-web'
 
         //Lombok
         compileOnly 'org.projectlombok:lombok'
@@ -44,7 +46,7 @@ subprojects {
         testAnnotationProcessor 'org.projectlombok:lombok'
         testCompileOnly 'org.projectlombok:lombok'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
-        testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
+        //testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
 
         // handle json file log
         implementation group: 'ch.qos.logback.contrib', name: 'logback-json-classic', version: '0.1.2'

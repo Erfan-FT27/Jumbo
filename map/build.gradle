@@ -12,6 +12,7 @@ publishing {
 }
 
 dependencies {
+
 }
 
 jar {
