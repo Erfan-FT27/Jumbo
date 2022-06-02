@@ -1,4 +1,4 @@
-package com.jumbo.map.dto;
+package com.jumbo.map.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -11,15 +11,15 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class StoreListDto {
-    private List<StoreDto> stores;
+public class Stores {
+    private List<StoreModel> stores;
 
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
     @JsonIgnoreProperties(ignoreUnknown = true)
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    public static class StoreDto {
+    public static class StoreModel {
 
         private String city;
         private String postalCode;
@@ -31,13 +31,13 @@ public class StoreListDto {
         private String longitude;
         private String latitude;
         private String complexNumber;
-        private Boolean showWarningMessage;
+        private boolean showWarningMessage;
         //TODO date format only hh:mm
         private String todayOpen;
         private String todayClose;
 
         private String locationType;
-        private Boolean collectionPoint;
+        private boolean collectionPoint;
         private String sapStoreID;
     }
 

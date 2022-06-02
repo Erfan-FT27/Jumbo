@@ -1,9 +1,9 @@
-package com.jumbo.map.service;
+package com.jumbo.map.service.initializer;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jumbo.map.dto.StoreListDto;
+import com.jumbo.map.model.Stores;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -32,15 +32,15 @@ public class StoreInfoReader {
 
 
     @SneakyThrows
-    public StoreListDto read() {
+    public Stores read() {
         if (log.isDebugEnabled()) {
             log.debug("Start reading from source");
         }
         return readFromResource(RESOURCE_LOCATION);
     }
 
-    StoreListDto readFromResource(String resourcePath) throws java.io.IOException {
-        return mapper.readValue(resourceLoader.getResource(resourcePath).getInputStream(), StoreListDto.class);
+    Stores readFromResource(String resourcePath) throws java.io.IOException {
+        return mapper.readValue(resourceLoader.getResource(resourcePath).getInputStream(), Stores.class);
     }
 
 }

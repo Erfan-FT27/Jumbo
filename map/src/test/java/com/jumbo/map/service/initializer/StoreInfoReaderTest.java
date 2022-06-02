@@ -1,8 +1,10 @@
-package com.jumbo.map.service;
+package com.jumbo.map.service.initializer;
+
 
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.jumbo.map.MapTestApplication;
-import com.jumbo.map.dto.StoreListDto;
+import com.jumbo.map.model.Stores;
+import com.jumbo.map.service.initializer.StoreInfoReader;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +34,7 @@ class StoreInfoReaderTest {
     @Test
     @SneakyThrows
     void testReadMethod_When_fileIsPresentButIsEmpty() {
-        StoreListDto list = reader.readFromResource("classpath:/mapinfo/emptystores.json");
+        Stores list = reader.readFromResource("classpath:/mapinfo/emptystores.json");
         assertNull(list.getStores());
     }
 
@@ -47,7 +49,7 @@ class StoreInfoReaderTest {
     @Test
     @SneakyThrows
     void testReadMethod_When_fileIsPresentAndStreetFieldIsNotPresent() {
-        StoreListDto list = reader.readFromResource("classpath:/mapinfo/streetfieldmissingstores.json");
+        Stores list = reader.readFromResource("classpath:/mapinfo/streetfieldmissingstores.json");
 
         assertFalse(list.getStores().isEmpty());
         assertEquals(1, list.getStores().size());
@@ -57,7 +59,7 @@ class StoreInfoReaderTest {
     @Test
     @SneakyThrows
     void testReadMethod_When_fileIsPresentAndHasValidInfo() {
-        StoreListDto list = reader.read();
+        Stores list = reader.read();
 
         assertFalse(list.getStores().isEmpty());
         assertEquals(1, list.getStores().size());
