@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
+//TODO remove it
 public interface StoreRepository extends MongoRepository<Store, String> {
 
     Page<Store> findByLocationNear(Point point, Pageable pageable);

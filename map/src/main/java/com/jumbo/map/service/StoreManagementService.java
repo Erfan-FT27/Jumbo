@@ -12,5 +12,5 @@ public interface StoreManagementService {
 
     void batchPersist(List<Stores.StoreModel> stores);
 
-    Page<Store> loadAllNearBy(Point point, Pageable pageable);
+    Page<Store> loadAllNearBy(String rsqlSearchParam, Point point, Pageable pageable);
 }

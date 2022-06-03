@@ -13,6 +13,7 @@ publishing {
 
 dependencies {
     implementation 'org.aspectj:aspectjweaver:1.9.6'
+    implementation 'com.github.rutledgepaulv:rest-query-engine:0.7.1'
 }
 
 jar {

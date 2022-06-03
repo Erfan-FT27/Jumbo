@@ -7,5 +7,5 @@ import org.springframework.data.geo.Point;
 
 public interface StoreService {
 
-    PageData<StoreOutDto> search(Point point, Pageable pageable);
+    PageData<StoreOutDto> search(String rsqlSearchParam, Point point, Pageable pageable);
 }

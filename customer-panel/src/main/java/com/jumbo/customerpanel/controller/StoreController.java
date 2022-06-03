@@ -33,7 +33,8 @@ public class StoreController {
     @JsonView(Simple.class)
     public ActionResult<StoreOutDto> search(@Valid SearchModel model) {
         return ActionResult.<StoreOutDto>builder()
-                .pageData(storeService.search(model.getPoint()
+                .pageData(storeService.search(model.getSearch()
+                        , model.getPoint()
                         , model.createPage()))
                 .success(true)
                 .message("List of store successfully returned")
@@ -44,7 +45,8 @@ public class StoreController {
     @JsonView(Detailed.class)
     public CompletableFuture<ActionResult<StoreOutDto>> detailedSearch(@Valid SearchModel model) {
         return CompletableFuture.supplyAsync(() -> ActionResult.<StoreOutDto>builder()
-                .pageData(storeService.search(model.getPoint()
+                .pageData(storeService.search(model.getSearch()
+                        , model.getPoint()
                         , model.createPage()))
                 .success(true)
                 .message("Detailed list store successfully returned")

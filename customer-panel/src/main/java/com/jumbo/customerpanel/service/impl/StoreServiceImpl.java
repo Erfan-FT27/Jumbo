@@ -18,8 +18,8 @@ public class StoreServiceImpl implements StoreService {
     private final StoreManagementService storeManagementService;
 
     @Transactional(readOnly = true)
-    public PageData<StoreOutDto> search(Point point, Pageable pageable) {
-        return PageData.convert(storeManagementService.loadAllNearBy(point, pageable),
+    public PageData<StoreOutDto> search(String rsqlSearchParam, Point point, Pageable pageable) {
+        return PageData.convert(storeManagementService.loadAllNearBy(rsqlSearchParam, point, pageable),
                 (Store s) -> StoreOutDto.construct().map(s));
     }
 }

@@ -47,6 +47,8 @@ public class SearchModel implements Serializable {
     @Max(value = MAX_PAGE_NUMBER, message = "in.search.model.pageNumber.max.size")
     private Integer pageNumber;
 
+    private String search;
+
     private Direction direction;
 
     @Size(max = MAX_ORDER_PROPERTIES_SIZE, message = "in.search.model.orderByProperties.size.limit")

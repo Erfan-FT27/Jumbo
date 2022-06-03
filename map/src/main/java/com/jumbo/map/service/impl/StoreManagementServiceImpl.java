@@ -2,6 +2,7 @@ package com.jumbo.map.service.impl;
 
 import com.jumbo.map.entity.Store;
 import com.jumbo.map.model.Stores.StoreModel;
+import com.jumbo.map.repository.CustomStoreRepository;
 import com.jumbo.map.repository.StoreRepository;
 import com.jumbo.map.service.StoreManagementService;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,7 @@ import java.util.stream.Collectors;
 public class StoreManagementServiceImpl implements StoreManagementService {
 
     private final StoreRepository storeRepo;
-
+    private final CustomStoreRepository customStoreRepository;
 
     @Transactional
     public void batchPersist(List<StoreModel> stores) {
@@ -29,7 +30,7 @@ public class StoreManagementServiceImpl implements StoreManagementService {
     }
 
     @Transactional(readOnly = true)
-    public Page<Store> loadAllNearBy(Point point, Pageable pageable) {
-        return storeRepo.findByLocationNear(point, pageable);
+    public Page<Store> loadAllNearBy(String rsqlSearchParam, Point point, Pageable pageable) {
+        return customStoreRepository.loadAllNearBy(rsqlSearchParam, point, pageable);
     }
 }
