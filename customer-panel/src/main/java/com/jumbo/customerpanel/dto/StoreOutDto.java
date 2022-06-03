@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@NoArgsConstructor(staticName = "construct")
 @AllArgsConstructor
+@NoArgsConstructor(staticName = "construct")
 public class StoreOutDto implements EntityToDtoMapper<Store, StoreOutDto> {
 
     @JsonView(Simple.class)

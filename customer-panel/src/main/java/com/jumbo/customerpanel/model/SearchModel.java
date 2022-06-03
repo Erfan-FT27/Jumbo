@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.geo.Point;
 
 import java.io.Serializable;
 
@@ -58,5 +59,10 @@ public class SearchModel implements Serializable {
     @JsonIgnore
     private Direction getDirectionOrDefault() {
         return direction != null ? direction : Direction.ASC;
+    }
+
+    @JsonIgnore
+    public Point getPoint(){
+        return new Point(getLongitude(), getLatitude());
     }
 }

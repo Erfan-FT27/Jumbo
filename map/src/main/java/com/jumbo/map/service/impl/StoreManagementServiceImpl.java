@@ -5,6 +5,7 @@ import com.jumbo.map.model.Stores.StoreModel;
 import com.jumbo.map.repository.StoreRepository;
 import com.jumbo.map.service.StoreManagementService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class StoreManagementServiceImpl implements StoreManagementService {
     }
 
     @Transactional(readOnly = true)
-    public List<Store> loadAllNearBy(Point point, Pageable pageable) {
+    public Page<Store> loadAllNearBy(Point point, Pageable pageable) {
         return storeRepo.findByLocationNear(point, pageable);
     }
 }
