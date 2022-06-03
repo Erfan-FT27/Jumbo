@@ -1,7 +1,7 @@
 package com.jumbo.customerpanel.service.impl;
 
-import com.jumbo.customerpanel.config.PageData;
 import com.jumbo.customerpanel.dto.StoreOutDto;
+import com.jumbo.customerpanel.model.PageData;
 import com.jumbo.customerpanel.service.StoreService;
 import com.jumbo.map.entity.Store;
 import com.jumbo.map.service.StoreManagementService;

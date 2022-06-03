@@ -1,11 +1,11 @@
 package com.jumbo.customerpanel.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.jumbo.customerpanel.config.ActionResult;
-import com.jumbo.customerpanel.config.View.Detailed;
-import com.jumbo.customerpanel.config.View.Simple;
 import com.jumbo.customerpanel.dto.StoreOutDto;
+import com.jumbo.customerpanel.model.ActionResult;
 import com.jumbo.customerpanel.model.SearchModel;
+import com.jumbo.customerpanel.model.View.Detailed;
+import com.jumbo.customerpanel.model.View.Simple;
 import com.jumbo.customerpanel.service.impl.StoreServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

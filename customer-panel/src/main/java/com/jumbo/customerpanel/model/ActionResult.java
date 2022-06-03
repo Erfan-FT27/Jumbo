@@ -1,4 +1,4 @@
-package com.jumbo.customerpanel.config;
+package com.jumbo.customerpanel.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

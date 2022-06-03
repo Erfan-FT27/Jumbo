@@ -1,7 +1,7 @@
 package com.jumbo.customerpanel.service;
 
-import com.jumbo.customerpanel.config.PageData;
 import com.jumbo.customerpanel.dto.StoreOutDto;
+import com.jumbo.customerpanel.model.PageData;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.geo.Point;
 

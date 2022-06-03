@@ -1,9 +1,9 @@
 package com.jumbo.customerpanel.dto;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.jumbo.customerpanel.config.EntityToDtoMapper;
-import com.jumbo.customerpanel.config.View.Detailed;
-import com.jumbo.customerpanel.config.View.Simple;
+import com.jumbo.customerpanel.model.EntityToDtoMapper;
+import com.jumbo.customerpanel.model.View.Detailed;
+import com.jumbo.customerpanel.model.View.Simple;
 import com.jumbo.map.entity.Store;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
