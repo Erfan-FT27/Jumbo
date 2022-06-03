@@ -12,7 +12,7 @@ publishing {
 }
 
 dependencies {
-
+    implementation 'org.aspectj:aspectjweaver:1.9.6'
 }
 
 jar {
