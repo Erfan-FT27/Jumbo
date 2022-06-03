@@ -2,6 +2,7 @@ package com.jumbo.customerpanel.controller;
 
 import com.jumbo.customerpanel.model.ErrorModel;
 import com.jumbo.customerpanel.utils.MessageTranslatorUtil;
+import com.mongodb.MongoException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
@@ -31,6 +32,15 @@ public class GlobalExceptionHandler {
         log.error("received invalid parameter [{}] ", ex.getMessage());
         return ErrorModel.builder()
                 .errorReasons(buildErrorReasonInCaseOfBindingFailure(ex.getBindingResult()))
+                .build();
+    }
+
+    @ExceptionHandler({MongoException.class})
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorModel handleMongoDBException(MongoException ex) {
+        log.error("DB exception : [{}]", ex.getMessage());
+        return ErrorModel.builder()
+                .errorReason(ex.getMessage())
                 .build();
     }
 

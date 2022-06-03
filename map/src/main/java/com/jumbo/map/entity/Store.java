@@ -7,10 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexType;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
-import org.springframework.data.mongodb.core.mapping.FieldType;
 
 @Data
 @Builder
@@ -30,7 +27,6 @@ public class Store {
     @GeoSpatialIndexed(type= GeoSpatialIndexType.GEO_2DSPHERE)
     private GeoJsonPoint location;
 
-    @Indexed
     private String locationType;
 
     private String todayOpen;
