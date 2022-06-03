@@ -1,5 +1,6 @@
 package com.jumbo.customerpanel.controller;
 
+import com.jumbo.customerpanel.model.ActionResult;
 import com.jumbo.customerpanel.model.ErrorModel;
 import com.jumbo.customerpanel.utils.MessageTranslatorUtil;
 import com.mongodb.MongoException;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.RejectedExecutionException;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -43,6 +45,17 @@ public class GlobalExceptionHandler {
                 .errorReason(ex.getMessage())
                 .build();
     }
+
+    @ExceptionHandler({RejectedExecutionException.class})
+    @ResponseStatus(HttpStatus.OK)
+    public ActionResult<String> handlingConcurrentExecutionException(RejectedExecutionException ex) {
+        log.error("execution exception occurred : [{}]", ex.getMessage());
+        return ActionResult.<String>builder()
+                .message(MessageTranslatorUtil.getText("global.exception.handler.rejected"))
+                .success(Boolean.FALSE)
+                .build();
+    }
+
 
 
     private List<String> buildErrorReasonInCaseOfBindingFailure(BindingResult bindingResult) {
