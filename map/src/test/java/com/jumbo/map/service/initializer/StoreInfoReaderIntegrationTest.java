@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(classes = {MongoDBTestConfiguration.class, MapTestApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ContextConfiguration(initializers = {MongoDBTestConfiguration.Initializer.class})
-class StoreInfoReaderTest {
+class StoreInfoReaderIntegrationTest {
 
     @Autowired
     StoreInfoReader reader;

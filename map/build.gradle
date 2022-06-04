@@ -22,6 +22,5 @@ jar {
 }
 
 test {
-    exclude '**/StoreManagementServiceImplTest.class'
-    exclude '**/StoreInfoReaderTest.class'
+    exclude '**/**IntegrationTest.class'
 }
