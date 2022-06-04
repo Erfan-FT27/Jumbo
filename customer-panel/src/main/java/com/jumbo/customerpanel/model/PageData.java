@@ -27,7 +27,13 @@ public class PageData<T> implements Serializable {
     private Integer totalPages;
     private Long totalElements;
 
-    public static <T,U> PageData<U> convert(Page<T> page, Function<T, U> function) {
+    public static <T, U> PageData<U> convert(Page<T> page, Function<T, U> function) {
+        if (page == null) return new PageData<>();
+        if (function == null) {
+            log.error("function argument could not be null");
+            throw new IllegalArgumentException("function argument could not be null");
+        }
+
         PageData<U> pageData = new PageData<>();
         pageData.setItems(page.getContent().stream().map(function).collect(Collectors.toList()));
         pageData.setTotalElements(page.getTotalElements());
