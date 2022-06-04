@@ -46,7 +46,8 @@ subprojects {
         testAnnotationProcessor 'org.projectlombok:lombok'
         testCompileOnly 'org.projectlombok:lombok'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
-        //testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
+        testImplementation 'org.testcontainers:mongodb:1.17.2'
+
 
         // handle json file log
         implementation group: 'ch.qos.logback.contrib', name: 'logback-json-classic', version: '0.1.2'

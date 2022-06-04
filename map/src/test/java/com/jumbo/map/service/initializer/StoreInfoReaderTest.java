@@ -4,18 +4,20 @@ package com.jumbo.map.service.initializer;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.jumbo.map.MapTestApplication;
 import com.jumbo.map.model.Stores;
-import com.jumbo.map.service.initializer.StoreInfoReader;
+import com.jumbo.map.service.MongoDBTestConfiguration;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 
 import java.io.FileNotFoundException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
-@SpringBootTest(classes = MapTestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = {MongoDBTestConfiguration.class, MapTestApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ContextConfiguration(initializers = {MongoDBTestConfiguration.Initializer.class})
 class StoreInfoReaderTest {
 
     @Autowired

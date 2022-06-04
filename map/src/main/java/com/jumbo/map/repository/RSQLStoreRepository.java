@@ -19,18 +19,16 @@ import org.springframework.util.StringUtils;
 
 @Repository
 @RequiredArgsConstructor
-//TODO rename it to StoreRepository
-public class CustomStoreRepository {
+public class RSQLStoreRepository {
 
     private final MongoTemplate mongoTemplate;
 
     public Page<Store> loadAllNearBy(String rsqlSearch, Point point, Pageable pageable) {
         Criteria rsqlCriteria = buildRSQLCriteria(rsqlSearch);
-
-        Query query = buildRealQuery(point, pageable, rsqlCriteria);
+        Query realQuery = buildRealQuery(point, pageable, rsqlCriteria);
         Query countQuery = buildCountQuery(point, rsqlCriteria);
 
-        return new PageImpl<>(mongoTemplate.find(query, Store.class)
+        return new PageImpl<>(mongoTemplate.find(realQuery, Store.class)
                 , pageable, mongoTemplate.count(countQuery, Store.class));
     }
 

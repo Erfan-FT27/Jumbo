@@ -20,3 +20,8 @@ jar {
     preserveFileTimestamps false
     reproducibleFileOrder true
 }
+
+test {
+    exclude '**/StoreManagementServiceImplTest.class'
+    exclude '**/StoreInfoReaderTest.class'
+}
