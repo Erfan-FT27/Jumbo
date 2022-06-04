@@ -22,12 +22,21 @@ import java.util.Objects;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.stream.Collectors;
 
+/**
+ * Handle application exceptions
+ */
 @Slf4j
 @RestControllerAdvice
 @RequiredArgsConstructor
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class GlobalExceptionHandler {
 
+    /**
+     * Handle binding exception that raised from javax validation
+     *
+     * @param ex
+     * @return
+     */
     @ExceptionHandler({BindException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorModel handleBindingException(BindException ex) {
@@ -37,6 +46,12 @@ public class GlobalExceptionHandler {
                 .build();
     }
 
+    /**
+     * Handle MongoDB exceptions
+     *
+     * @param ex
+     * @return
+     */
     @ExceptionHandler({MongoException.class})
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorModel handleMongoDBException(MongoException ex) {
@@ -46,6 +61,13 @@ public class GlobalExceptionHandler {
                 .build();
     }
 
+    /**
+     * Handle concurrent exception that will raised in detailed search service when
+     * queue capacity is fulled
+     *
+     * @param ex
+     * @return
+     */
     @ExceptionHandler({RejectedExecutionException.class})
     @ResponseStatus(HttpStatus.OK)
     public ActionResult<String> handlingConcurrentExecutionException(RejectedExecutionException ex) {
@@ -56,8 +78,13 @@ public class GlobalExceptionHandler {
                 .build();
     }
 
-
-
+    /**
+     * Receive binding result error messages and translate with MessageTranslatorUtil
+     * to return more suitable result
+     *
+     * @param bindingResult
+     * @return
+     */
     private List<String> buildErrorReasonInCaseOfBindingFailure(BindingResult bindingResult) {
         if (log.isDebugEnabled())
             log.debug("binding failure with reason [{}]", bindingResult.getFieldErrors().stream()

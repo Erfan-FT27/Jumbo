@@ -7,6 +7,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Act as a general out dto which handles single and list data types
+ * it will help the consumer to have clear expectations from our API.
+ * It is returned when HttpStatus is 2xx, also bringing this class helps to
+ * cover bushiness logic error in better ways (we dont need different https statuses for each
+ * custom errors- handled with success field)
+ *
+ * @param <T>
+ */
 @Data
 @Builder
 @NoArgsConstructor

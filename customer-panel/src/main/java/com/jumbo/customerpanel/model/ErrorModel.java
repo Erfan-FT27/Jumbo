@@ -11,6 +11,10 @@ import org.springframework.util.StringUtils;
 
 import java.util.List;
 
+/**
+ * When returning a 4xx and 5xx response to the client this class acts a
+ * general dto
+ */
 @Data
 @Slf4j
 @Builder

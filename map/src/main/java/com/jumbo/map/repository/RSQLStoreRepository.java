@@ -17,6 +17,15 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
+/**
+ * This class execute the near query together with RSQL because of that I couldnot use
+ * SpringDataRepository and directly should work with mongo-template.
+ * So There are 4 things need to be done
+ * 1. Building criteria based on received rsqlSearch format with help of external library
+ * 2. Attach near query criteria to the RSQL built criteria also add a pagination to created query
+ * 3. Create count query individually because count query not adaptable with GeoJsonPoint (index problem) so using Point instead
+ * 4. Construct PageImpl manually by aggregated result
+ */
 @Repository
 @RequiredArgsConstructor
 public class RSQLStoreRepository {

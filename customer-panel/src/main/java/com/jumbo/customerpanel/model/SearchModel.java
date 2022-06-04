@@ -20,6 +20,14 @@ import java.io.Serializable;
 
 import static com.jumbo.customerpanel.Constant.*;
 
+/**
+ * This class acts as dto for every search API,
+ * it supports : javax validations, longitude and latitude query ,
+ * order-by query based on multiple attributes (column) alongside setting the result direction
+ * also in the search field there could be RSQL format string that helps to query every entities
+ * based on the received input.
+ * search field (RSQL format) executed with longitude and latitude which provide a very general way on near search query
+ */
 @Data
 @Slf4j
 @Builder
@@ -79,7 +87,7 @@ public class SearchModel implements Serializable {
     }
 
     @JsonIgnore
-    public Point getPoint(){
+    public Point getPoint() {
         return new Point(getLongitude(), getLatitude());
     }
 }

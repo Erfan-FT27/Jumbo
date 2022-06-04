@@ -8,6 +8,9 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 
 import javax.annotation.PostConstruct;
 
+/**
+ * Config resource bundle to read customerpanel messages
+ */
 @Configuration
 public class ResourceBundleConfig {
 

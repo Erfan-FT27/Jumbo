@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 /**
  * MapInitializer will executed when context fully initialized by receiving ContextRefreshedEvent
  * it will call StoreInfoReader to load stores info, and call StoreManagementService for persist data
+ * then it produces MapInitializedEvent to call MongoPreferenceInitializer
  */
 @Slf4j
 @Component

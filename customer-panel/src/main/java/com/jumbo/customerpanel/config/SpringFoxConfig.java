@@ -6,6 +6,9 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
+/**
+ * Config swagger API
+ */
 @Configuration
 public class SpringFoxConfig {
     @Bean

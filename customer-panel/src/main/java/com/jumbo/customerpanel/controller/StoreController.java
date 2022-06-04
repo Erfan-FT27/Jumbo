@@ -29,6 +29,15 @@ public class StoreController {
     @Qualifier(Detailed_SEARCH_SERVICE_EXECUTOR)
     private final TaskExecutor detailedSearchServiceTaskExecutor;
 
+    /**
+     * Provide search mechanism for customers, that accepting SearchModel
+     * This API capable of receiving RSQL format request alongside location query
+     * and perform the nearest stores by combining them, also this API return data
+     * in more simple format to reduce network cost and increase performance
+     *
+     * @param model
+     * @return
+     */
     @GetMapping("/search")
     @JsonView(Simple.class)
     public ActionResult<StoreOutDto> search(@Valid SearchModel model) {
@@ -41,6 +50,13 @@ public class StoreController {
                 .build();
     }
 
+    /**
+     * This API has functionality exact as search API but it returned more detailed result
+     * and it is protected by rate of request, this API simulates a expensive service
+     *
+     * @param model
+     * @return
+     */
     @GetMapping("/detailed-info/search")
     @JsonView(Detailed.class)
     public CompletableFuture<ActionResult<StoreOutDto>> detailedSearch(@Valid SearchModel model) {

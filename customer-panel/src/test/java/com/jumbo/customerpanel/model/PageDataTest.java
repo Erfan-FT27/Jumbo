@@ -3,6 +3,7 @@ package com.jumbo.customerpanel.model;
 import com.jumbo.customerpanel.Constant;
 import com.jumbo.customerpanel.dto.StoreOutDto;
 import com.jumbo.map.entity.Store;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
@@ -38,18 +39,14 @@ class PageDataTest {
     @Test
     void testConvert_when_everyThingIsOk() {
 
-        SplittableRandom random = new SplittableRandom();
+        final SplittableRandom random = new SplittableRandom();
 
         final String street = "street";
-        List<Store> tenStores = IntStream.range(0, 10)
-                .mapToObj(value -> Store.builder()
-                        .location(generateRandomValidLocation(random))
-                        .street(street)
-                        .build())
-                .collect(Collectors.toList());
+        List<Store> tenStores = generateTenStores(random, street);
 
         PageData<StoreOutDto> result = PageData.convert(new PageImpl<>(tenStores),
                 (Store s) -> StoreOutDto.construct().map(s));
+
         assertEquals(10, result.getItems().size());
         assertEquals(1, result.getTotalPages());
         assertEquals(10, result.getTotalElements());
@@ -60,6 +57,16 @@ class PageDataTest {
             assertTrue(LATITUDE_MIN_SIZE <= storeOutDto.getLatitude() && storeOutDto.getLatitude() <= LATITUDE_MAX_SIZE);
         });
 
+    }
+
+    @NotNull
+    private List<Store> generateTenStores(SplittableRandom random, String street) {
+        return IntStream.range(0, 10)
+                .mapToObj(value -> Store.builder()
+                        .location(generateRandomValidLocation(random))
+                        .street(street)
+                        .build())
+                .collect(Collectors.toList());
     }
 
     private GeoJsonPoint generateRandomValidLocation(SplittableRandom random) {

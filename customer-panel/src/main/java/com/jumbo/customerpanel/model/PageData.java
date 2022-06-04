@@ -13,6 +13,11 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * PageData provides a more mature way to returning list data in all APIs
+ * it helps for consumers to use pagination approach
+ * @param <T>
+ */
 @Data
 @Slf4j
 @Builder

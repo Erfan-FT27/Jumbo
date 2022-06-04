@@ -6,6 +6,10 @@ import org.springframework.context.i18n.LocaleContextHolder;
 
 import java.util.Locale;
 
+/**
+ * A UtilityClass that loads the messages based on the key and other args
+ * from resource messages
+ */
 @UtilityClass
 public class MessageTranslatorUtil {
 

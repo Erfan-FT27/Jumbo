@@ -5,12 +5,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
+/**
+ * Config task executor for Detailed search
+ * add queue capacity to manage backpressure
+ */
 @Configuration
 public class DetailedSearchServiceConfig {
 
     public static final String Detailed_SEARCH_SERVICE_EXECUTOR = "detailed_search_service_executor";
 
-    @Bean(name=Detailed_SEARCH_SERVICE_EXECUTOR)
+    @Bean(name = Detailed_SEARCH_SERVICE_EXECUTOR)
     public TaskExecutor detailedSearchServiceTaskExecutor() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(2);
