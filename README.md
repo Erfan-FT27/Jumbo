@@ -1,13 +1,12 @@
 # Jumbo
 
 ###  Overview
-This project aims to provide API to load the nearest locations based on the specific coordinate. there is a Stores.json file (in the map module) that all stores location are 
-available there, so after the application started successfully it will try to persist them in a database (MongoDB) and then there are APIs (in the customer-panel) that offer
+This project aims to find the nearest locations based on the specific coordinate. there is a Stores.json file (in the map module) that all stores location are available there, so after the application started successfully it will try to persist them in a database (MongoDB) and then there are APIs (in the customer-panel) that offer
 general search mechanism (RSQL) alongside near-query.
 
 ###  Module Definition
 There are two modules in this project:
-* Customer-panel : It will act as a panel for customers and API exposed here, it has an aggregating charisma inside it that will call any required resources to answer the client, so it will call the map module to load the nearest stores
+* Customer-panel : It will act as a panel for customers and contains exposed API, it has an aggregating charisma inside it that will call any required resources to answer the client, so it will call the Map module to load the nearest stores
 * Map: This module serves under a Map domain in the project and will handle all the related map business, it will directly work with the database and expose methods to consume.
 
 Customer-panel is an executive module and the Map module will be used as a dependency in Customer-panel and it has the potential to act solo in the feature under this domain.
