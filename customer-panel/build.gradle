@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'com.google.cloud.tools.jib'
 }
 
 publishing {
@@ -22,3 +23,10 @@ dependencies {
     implementation 'io.swagger:swagger-annotations:1.6.2'
     implementation 'io.springfox:springfox-swagger-ui:3.0.0'
 }
+
+jib.to.image="erfancreed/jumbo:1.0.0";
+jib.container.jvmFlags = ["-server", "-Xmx1g", "-Xms256m"
+                          , "-Djava.awt.headless=true"
+                          , "-Dorg.apache.catalina.connector.RECYCLE_FACADES=true"
+                          , "-Dcom.sun.management.jmxremote", "-Dfile.encoding=UTF-8", "-XX:+UseCompressedOops"
+                          , "-Djava.awt.headless=true", "-Djava.net.preferIPv4Stack=true"]
